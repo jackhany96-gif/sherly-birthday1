@@ -3,8 +3,8 @@
 A cute, personalized birthday web app made especially for Sherly.
 
 ## 🔗 Live Link
-- **GitHub Repository**: [https://github.com/jackhany96-gif/sherly-birthday1024](https://github.com/jackhany96-gif/sherly-birthday1024)
-- **Live Website (GitHub Pages)**: [https://jackhany96-gif.github.io/sherly-birthday1024/](https://jackhany96-gif.github.io/sherly-birthday1024/)
+- **GitHub Repository**: [https://github.com/jackhany96-gif/sherly-birthday1](https://github.com/jackhany96-gif/sherly-birthday1)
+- **Live Website (GitHub Pages)**: [https://jackhany96-gif.github.io/sherly-birthday1/](https://jackhany96-gif.github.io/sherly-birthday1/)
 
 ---
 
@@ -21,7 +21,7 @@ A cute, personalized birthday web app made especially for Sherly.
 ---
 
 ## 🚀 Enabling GitHub Pages
-1. Open the repository on GitHub: [https://github.com/jackhany96-gif/sherly-birthday1024](https://github.com/jackhany96-gif/sherly-birthday1024)
+1. Open the repository on GitHub: [https://github.com/jackhany96-gif/sherly-birthday1](https://github.com/jackhany96-gif/sherly-birthday1)
 2. Click **Settings** (tab at the top).
 3. In the left sidebar, click **Pages**.
 4. Under **Build and deployment** > **Source**:
@@ -30,7 +30,7 @@ A cute, personalized birthday web app made especially for Sherly.
    - Click **Save**
    *(Note: Make sure your repository visibility is set to **Public** under Settings > General > Danger Zone if using a free GitHub account).*
 5. Within 1–2 minutes, your live website will be live at:
-   **`https://jackhany96-gif.github.io/sherly-birthday1024/`**
+   **`https://jackhany96-gif.github.io/sherly-birthday1/`**
 
 ---
 
