@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f9e8f4">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Sherly ♡">
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="manifest" href="manifest.json">
+  <title>Happy Birthday Sherly ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Sacramento&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- App Container (Mobile viewport frame) -->
+  <div class="app-frame" id="appFrame">
+
+    <!-- Top Navigation Header -->
+    <header class="app-header">
+      <button class="icon-btn" id="menuToggleBtn" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <div class="header-title" id="headerTitle">Sherly's World</div>
+      <button class="icon-btn heart-btn" id="headerHeartBtn" aria-label="Send Love">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      </button>
+    </header>
+
+    <!-- Side Drawer Menu (Wireframe Screen 8) -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <aside class="side-drawer" id="sideDrawer">
+      <div class="drawer-header">
+        <div class="drawer-avatar">
+          <span class="avatar-bow">🎀</span>
+        </div>
+        <div class="drawer-profile-info">
+          <h3>Sherly</h3>
+          <p>Make it a great day ♡</p>
+        </div>
+        <button class="drawer-close-btn" id="closeDrawerBtn" aria-label="Close menu">&times;</button>
+      </div>
+
+      <nav class="drawer-nav">
+        <button class="drawer-item active" data-target="screen-home">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-label">Home</span>
+        </button>
+        <button class="drawer-item" data-target="screen-countdown">
+          <span class="nav-icon">⏱️</span>
+          <span class="nav-label">Countdown</span>
+        </button>
+        <button class="drawer-item" data-target="screen-memories">
+          <span class="nav-icon">🖼️</span>
+          <span class="nav-label">Memories</span>
+        </button>
+        <button class="drawer-item" data-target="screen-gifts">
+          <span class="nav-icon">🎁</span>
+          <span class="nav-label">Gifts</span>
+        </button>
+        <button class="drawer-item" data-target="screen-music">
+          <span class="nav-icon">🎵</span>
+          <span class="nav-label">Music</span>
+        </button>
+        <button class="drawer-item" data-target="screen-letter">
+          <span class="nav-icon">💌</span>
+          <span class="nav-label">Letter</span>
+        </button>
+        <button class="drawer-item" data-target="screen-surprise">
+          <span class="nav-icon">✨</span>
+          <span class="nav-label">The Final Surprise</span>
+        </button>
+        <button class="drawer-item" id="openSettingsBtn">
+          <span class="nav-icon">⚙️</span>
+          <span class="nav-label">Settings / Edit App</span>
+        </button>
+        <button class="drawer-item" id="lockAppBtn">
+          <span class="nav-icon">🔒</span>
+          <span class="nav-label">Lock App</span>
+        </button>
+      </nav>
+
+      <div class="drawer-footer">
+        🌸 You're so special ♡
+      </div>
+    </aside>
+
+    <!-- VIP Passcode Lock Screen Overlay -->
+    <div class="lock-screen-overlay" id="lockScreen">
+      <div class="lock-card">
+        <div class="lock-avatar-glow">
+          <div class="lock-avatar">🎀</div>
+        </div>
+        <div class="lock-badge">🔒 VIP Access</div>
+        <h2 class="lock-title">Sherly's Birthday World</h2>
+        <p class="lock-subtitle">Enter your secret passcode to unlock your birthday surprises ♡</p>
+
+        <!-- Mode 1: Numeric PIN Keypad -->
+        <div id="pinModeContainer">
+          <div class="pin-dots-container" id="pinDots">
+            <span class="pin-dot"></span>
+            <span class="pin-dot"></span>
+            <span class="pin-dot"></span>
+            <span class="pin-dot"></span>
+          </div>
+
+          <p class="lock-status" id="lockStatusMessage"></p>
+
+          <div class="pin-keypad">
+            <button class="pin-key" data-key="1">1</button>
+            <button class="pin-key" data-key="2">2</button>
+            <button class="pin-key" data-key="3">3</button>
+            <button class="pin-key" data-key="4">4</button>
+            <button class="pin-key" data-key="5">5</button>
+            <button class="pin-key" data-key="6">6</button>
+            <button class="pin-key" data-key="7">7</button>
+            <button class="pin-key" data-key="8">8</button>
+            <button class="pin-key" data-key="9">9</button>
+            <button class="pin-key key-action" id="keyClear">C</button>
+            <button class="pin-key" data-key="0">0</button>
+            <button class="pin-key key-action" id="keyHeart">♡</button>
+          </div>
+        </div>
+
+        <!-- Mode 2: Word Passcode Input -->
+        <div id="wordModeContainer" class="word-passcode-box" style="display:none;">
+          <input type="text" class="word-passcode-input" id="wordPasscodeInput" placeholder="Type secret word..." autocomplete="off">
+          <button class="pill-btn primary-glow-btn" id="wordPasscodeSubmitBtn" style="padding: 10px 24px; font-size: 0.9rem;">Unlock ♡</button>
+        </div>
+
+        <button class="toggle-passcode-btn" id="togglePasscodeModeBtn">⌨️ Use word password</button>
+        <button class="lock-hint-btn" id="lockHintBtn">💡 Need a hint?</button>
+        <p class="lock-hint-text" id="lockHintText" style="display:none;"></p>
+      </div>
+    </div>
+
+    <!-- App Main Screen Views -->
+    <main class="screens-viewport">
+
+      <!-- SCREEN 1: Welcome / Home Screen -->
+      <section class="screen-view active" id="screen-home">
+        <div class="sparkles-decor" aria-hidden="true">
+          <span class="sparkle s1">✦</span>
+          <span class="sparkle s2">✧</span>
+          <span class="sparkle s3">✦</span>
+          <span class="sparkle s4">✧</span>
+          <span class="sparkle s5">✦</span>
+        </div>
+
+        <div class="home-content">
+          <div class="cute-bow-wrapper">
+            <div class="cute-bow">🎀</div>
+          </div>
+
+          <p class="home-subtitle">Happy Birthday</p>
+          <h1 class="home-title">Sherly <span>♡</span></h1>
+          <p class="home-quote">You make the world brighter just by being in it ♡</p>
+
+          <button class="pill-btn primary-glow-btn" id="exploreBtn" data-target="screen-countdown">
+            Explore Your Birthday World <span>&rarr;</span>
+          </button>
+
+          <!-- Quick Action Cards (4 buttons) -->
+          <div class="quick-action-grid">
+            <button class="quick-card" data-target="screen-gifts">
+              <span class="qc-icon">🎁</span>
+              <span class="qc-text">Gifts</span>
+            </button>
+            <button class="quick-card" data-target="screen-memories">
+              <span class="qc-icon">🖼️</span>
+              <span class="qc-text">Memories</span>
+            </button>
+            <button class="quick-card" data-target="screen-music">
+              <span class="qc-icon">🎵</span>
+              <span class="qc-text">Music</span>
+            </button>
+            <button class="quick-card" data-target="screen-letter">
+              <span class="qc-icon">💌</span>
+              <span class="qc-text">Letter</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 2: Birthday Countdown -->
+      <section class="screen-view" id="screen-countdown">
+        <div class="sub-screen-header">
+          <button class="back-btn" data-target="screen-home" aria-label="Back">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+          <h2>Birthday Countdown</h2>
+          <span class="header-heart">♡</span>
+        </div>
+
+        <div class="countdown-content">
+          <p class="countdown-heading">Sherly's Birthday is in... ♡</p>
+
+          <div class="countdown-boxes">
+            <div class="time-box">
+              <span class="time-val" id="cdDays">00</span>
+              <span class="time-lbl">Days</span>
+            </div>
+            <div class="time-box">
+              <span class="time-val" id="cdHours">00</span>
+              <span class="time-lbl">Hours</span>
+            </div>
+            <div class="time-box">
+              <span class="time-val" id="cdMinutes">00</span>
+              <span class="time-lbl">Minutes</span>
+            </div>
+            <div class="time-box">
+              <span class="time-val" id="cdSeconds">00</span>
+              <span class="time-lbl">Seconds</span>
+            </div>
+          </div>
+
+          <div class="cake-illustration-wrapper">
+            <div class="cake-glow"></div>
+            <div class="cake-emoji">🎂</div>
+            <div class="cake-sparkles">✨ ✨ ✨</div>
+          </div>
+
+          <p class="cake-message">Another year of being amazing, and this is just the beginning! ♡</p>
+
+          <div class="countdown-badge">
+            <span id="countdownStatusBadge">Until your special day ♡</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 3: Memories -->
+      <section class="screen-view" id="screen-memories">
+        <div class="sub-screen-header">
+          <button class="back-btn" data-target="screen-home" aria-label="Back">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+          <h2>Our Memories</h2>
+          <span class="header-heart">♡</span>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="tab-pill-bar">
+          <button class="tab-pill active" data-tab="photos">Photos</button>
+          <button class="tab-pill" data-tab="moments">Moments</button>
+          <button class="tab-pill" data-tab="messages">Messages</button>
+        </div>
+
+        <!-- Tab 1: Photos Tab -->
+        <div class="tab-pane active" id="tab-photos">
+          <div class="polaroid-scrapbook" id="polaroidContainer">
+            <!-- Polaroid Cards generated dynamically or styled -->
+          </div>
+          <div class="add-photo-banner">
+            <input type="file" id="photoFileInput" accept="image/*" style="display: none;">
+            <button class="add-photo-btn" id="uploadPhotoBtn">
+              <span>📷</span> Add / Pick Photo
+            </button>
+          </div>
+          <div class="pagination-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+
+        <!-- Tab 2: Moments Tab -->
+        <div class="tab-pane" id="tab-moments">
+          <div class="moments-list" id="momentsContainer">
+            <!-- Funny moments and stories -->
+          </div>
+        </div>
+
+        <!-- Tab 3: Messages Tab -->
+        <div class="tab-pane" id="tab-messages">
+          <div class="sticky-notes-board" id="stickyContainer">
+            <!-- Cute sticky notes -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 4: Birthday Gifts (Mystery Gift Boxes) -->
+      <section class="screen-view" id="screen-gifts">
+        <div class="sub-screen-header">
+          <button class="back-btn" data-target="screen-home" aria-label="Back">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+          <h2>Birthday Gifts</h2>
+          <span class="header-heart">♡</span>
+        </div>
+
+        <p class="gifts-subtitle">Tap each mystery box to unwrap your surprise</p>
+
+        <!-- 6 Wireframe Gift Boxes -->
+        <div class="gifts-grid" id="giftsGrid">
+          <!-- Rendered dynamically from script.js config -->
+        </div>
+
+        <div class="gifts-footer-hint">
+          <span>🎁</span> Keep opening... there are more surprises! ♡
+        </div>
+      </section>
+
+      <!-- SCREEN 5: Music -->
+      <section class="screen-view" id="screen-music">
+        <div class="sub-screen-header">
+          <button class="back-btn" data-target="screen-home" aria-label="Back">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+          <h2>Music</h2>
+          <span class="header-heart">♡</span>
+        </div>
+
+        <div class="music-screen-body">
+          <!-- Album Art Card with Sunset/Clouds aesthetic -->
+          <div class="album-art-card">
+            <div class="album-clouds-art">
+              <span class="album-text">Good<br>Vibes<br>Only ♡</span>
+              <span class="album-notes">♫ ♩ ♪</span>
+            </div>
+          </div>
+
+          <div class="song-meta">
+            <h3 class="song-title" id="songTitle">Better Days</h3>
+            <p class="song-artist" id="songArtist">SZA &bull; Sherly's Birthday Vibes</p>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="player-progress-area">
+            <div class="progress-bar-bg" id="progressBarBg">
+              <div class="progress-bar-fill" id="progressBarFill"></div>
+            </div>
+            <div class="time-stamps">
+              <span id="currentTime">1:24</span>
+              <span id="totalDuration">3:52</span>
+            </div>
+          </div>
+
+          <!-- Music Controls -->
+          <div class="player-controls">
+            <button class="ctrl-btn sub-ctrl" id="shuffleBtn" title="Shuffle">🔀</button>
+            <button class="ctrl-btn main-ctrl" id="prevTrackBtn" title="Previous">⏮️</button>
+            <button class="ctrl-btn play-circle-btn" id="playPauseBtn" title="Play / Pause">
+              <span id="playIcon">▶</span>
+            </button>
+            <button class="ctrl-btn main-ctrl" id="nextTrackBtn" title="Next">⏭️</button>
+            <button class="ctrl-btn sub-ctrl" id="repeatBtn" title="Repeat">🔁</button>
+          </div>
+
+          <!-- Spotify Link Card -->
+          <div class="spotify-link-box">
+            <span>🎧 Prefer Spotify?</span>
+            <a href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" id="spotifyExternalLink">Open Sherly's Playlist ↗</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 6: A Letter for You -->
+      <section class="screen-view" id="screen-letter">
+        <div class="sub-screen-header">
+          <button class="back-btn" data-target="screen-home" aria-label="Back">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+          <h2>A Letter for You</h2>
+          <span class="header-heart">♡</span>
+        </div>
+
+        <div class="letter-sheet-container">
+          <!-- Authentic Stationery Paper -->
+          <div class="paper-stationery">
+            <div class="paper-clip">📎</div>
+            <div class="paper-content" id="letterBody">
+              <p class="salutation">Dear Sherly,</p>
+              <p>On your special day, I just want you to know how much you mean to all of us. You're kind, funny, strong, and you make everything brighter.</p>
+              <p>You deserve all the happiness in the world &mdash; today and always. ♡</p>
+              <p class="letter-cheer">Happy Birthday!</p>
+              <p class="letter-valediction">With so much love,</p>
+              <div class="letter-signature-bow">🎀 ♡ 🎀</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 7: The Final Surprise -->
+      <section class="screen-view cosmic-theme" id="screen-surprise">
+        <div class="sub-screen-header dark-header">
+          <button class="back-btn light" data-target="screen-home" aria-label="Back">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+          <h2>The Final Surprise</h2>
+          <span class="header-heart light">♡</span>
+        </div>
+
+        <div class="surprise-screen-body">
+          <div class="cosmic-particles">
+            <span class="c-sparkle p1">✦</span>
+            <span class="c-sparkle p2">✧</span>
+            <span class="c-sparkle p3">✦</span>
+            <span class="c-sparkle p4">✨</span>
+            <span class="c-sparkle p5">✧</span>
+          </div>
+
+          <div class="magical-gift-wrapper" id="magicalGift">
+            <div class="glow-halo"></div>
+            <div class="surprise-gift-box">🎁</div>
+            <div class="magic-rays">✨ ✦ ✨</div>
+          </div>
+
+          <h2 class="surprise-title">You did it, Sherly! 🎉</h2>
+          <p class="surprise-desc">Here's a little something just for you...</p>
+
+          <button class="pill-btn magical-glow-btn" id="openFinalSurpriseBtn">
+            Open Your Surprise ♡
+          </button>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Bottom App Navigation Bar -->
+    <nav class="bottom-app-bar" id="bottomNavBar">
+      <button class="nav-tab active" data-target="screen-home">
+        <span class="nav-tab-icon">🏠</span>
+        <span class="nav-tab-text">Home</span>
+      </button>
+      <button class="nav-tab" data-target="screen-countdown">
+        <span class="nav-tab-icon">⏱️</span>
+        <span class="nav-tab-text">Countdown</span>
+      </button>
+      <button class="nav-tab" data-target="screen-memories">
+        <span class="nav-tab-icon">🖼️</span>
+        <span class="nav-tab-text">Memories</span>
+      </button>
+      <button class="nav-tab" data-target="screen-gifts">
+        <span class="nav-tab-icon">🎁</span>
+        <span class="nav-tab-text">Gifts</span>
+      </button>
+      <button class="nav-tab" data-target="screen-music">
+        <span class="nav-tab-icon">🎵</span>
+        <span class="nav-tab-text">Music</span>
+      </button>
+      <button class="nav-tab" data-target="screen-letter">
+        <span class="nav-tab-icon">💌</span>
+        <span class="nav-tab-text">Letter</span>
+      </button>
+    </nav>
+
+    <!-- Modal Dialog for Gift Box Unwrapping -->
+    <dialog class="custom-dialog" id="giftModal">
+      <div class="dialog-card">
+        <button class="modal-close-btn" id="closeModalBtn" aria-label="Close">&times;</button>
+        <div class="modal-icon-badge" id="modalIcon">🎁</div>
+        <h3 class="modal-title" id="modalTitle">Surprise Title</h3>
+        <div class="modal-body-content" id="modalBody"></div>
+        <button class="pill-btn primary-glow-btn modal-btn" id="modalOkBtn">Aww, thank you! ♡</button>
+      </div>
+    </dialog>
+
+    <!-- Settings / Customizer Drawer/Modal -->
+    <dialog class="custom-dialog" id="settingsModal">
+      <div class="dialog-card settings-card">
+        <button class="modal-close-btn" id="closeSettingsBtn" aria-label="Close">&times;</button>
+        <div class="modal-icon-badge">⚙️</div>
+        <h3 class="modal-title">Customize Sherly's App</h3>
+        <p class="settings-hint">You can change these values right here, or save them permanently in <code>script.js</code>.</p>
+        
+        <div class="setting-field">
+          <label for="settingBirthday">Sherly's Birthday:</label>
+          <input type="date" id="settingBirthday">
+        </div>
+        <div class="setting-field">
+          <label for="settingName">Friend's Name:</label>
+          <input type="text" id="settingName" value="Sherly">
+        </div>
+        <div class="setting-field">
+          <label for="settingSong">Favorite Song Title:</label>
+          <input type="text" id="settingSong" value="Better Days">
+        </div>
+        <div class="setting-field">
+          <label for="settingArtist">Artist / Singer:</label>
+          <input type="text" id="settingArtist" value="SZA">
+        </div>
+        <div class="setting-field">
+          <label for="settingSpotify">Spotify Playlist Link:</label>
+          <input type="url" id="settingSpotify" value="https://open.spotify.com/">
+        </div>
+        <div class="setting-field">
+          <label for="settingAudioFile">Upload MP3 Song File (plays directly in app):</label>
+          <input type="file" id="settingAudioFile" accept="audio/*">
+        </div>
+        <div class="setting-field">
+          <label for="settingPasscode">Secret Passcode / Cute Password:</label>
+          <input type="text" id="settingPasscode" value="1105">
+        </div>
+        <div class="setting-field">
+          <label for="settingPasscodeHint">Password Hint:</label>
+          <input type="text" id="settingPasscodeHint" value="Hint: Sherly's birthday month & day (MMDD) ♡">
+        </div>
+        
+        <button class="pill-btn primary-glow-btn modal-btn" id="saveSettingsBtn">Save & Apply Changes ♡</button>
+        <button class="pill-btn primary-glow-btn modal-btn" id="exportEditsBtn" style="margin-top: 10px; background: linear-gradient(135deg, #a855f7, #6366f1); box-shadow: 0 8px 24px rgba(99, 102, 241, 0.35);">📋 Copy All My Edits (To Save Permanently)</button>
+        <button class="add-photo-btn" id="resetPhotosBtn" style="margin-top: 10px; width: 100%; justify-content: center; border-color: #fca5a5; color: #dc2626;">🗑️ Reset / Clear All Scrapbook Photos</button>
+      </div>
+    </dialog>
+
+  </div>
+
+  <!-- Audio element for background soothing lofi/birthday melody -->
+  <audio id="audioPlayer" loop preload="none"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
